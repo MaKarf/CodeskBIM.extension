@@ -1,0 +1,40 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title=""
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+        ResizeMode="NoResize"
+
+        MouseMove="mouse_move"
+        KeyDown="close_on_escape"
+        MouseRightButtonDown="mouse_right_button_down_handler"
+        MouseLeftButtonDown="mouse_left_button_down_handler">
+
+    <Grid x:Name="grid1" Background="White" MouseWheel="zoom">
+
+        <!-- Add a Border element to create a thick border around the content -->
+        <Border BorderThickness="10">
+            <!-- Set the BorderBrush property to a semi-transparent red color -->
+            <Border.BorderBrush>
+                <SolidColorBrush Color="Red" Opacity="0.5"/>
+            </Border.BorderBrush>
+
+            <Grid x:Name="grid2">
+                <Grid.RenderTransform>
+                    <MatrixTransform/>
+                </Grid.RenderTransform>
+
+                <Image Panel.ZIndex="1" Name="image" Stretch="Uniform"/>
+
+            </Grid>
+        </Border>
+
+        <Button Panel.ZIndex="2" x:Name="txt" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top"
+                Width="120" FontSize="11"/>
+
+    </Grid>
+</Window>

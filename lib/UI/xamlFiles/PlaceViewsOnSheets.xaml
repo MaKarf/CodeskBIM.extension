@@ -1,0 +1,133 @@
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="Place Views on Sheet"
+        Height="660" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+
+        ResizeMode="NoResize">
+    <!--WindowStyle="None"-->
+
+    <!--MAIN-->
+    <StackPanel Margin="10">
+
+        <!--FILTER START-->
+        <StackPanel Orientation="Vertical" Margin="0, 0, 0, 5">
+            <DockPanel>
+                <Label Content="Filter by View Type:"
+                       Foreground="Black"/>
+                <ComboBox x:Name="view_type_filter" Width="190" Height="20"
+                          HorizontalAlignment="Right"/>
+            </DockPanel>
+
+            <Label x:Name="report_selected" Content=""
+                   Foreground="Black"/>
+
+            <DockPanel HorizontalAlignment="Center">
+                <CheckBox x:Name="horizontal_array_checkbox" Content="Horizontal Array" IsChecked="True"/>
+                <CheckBox x:Name="vertical_array_checkbox" Content="Vertical Array" Margin="30,0,0,0"/>
+
+            </DockPanel>
+
+        </StackPanel>
+        <!--FILTER END-->
+
+
+        <!--LISTBOX START-->
+        <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+            <!--FIRST LISTBOX START-->
+            <StackPanel x:Name="views_list_box_panel" Orientation="Vertical" Width="300">
+                <ListBox x:Name="views_list_box"
+                         Height="400"
+                         Background="#E6ECF3"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         BorderBrush="Black"
+                         Margin="0,0,0,15"/>
+
+            </StackPanel>
+            <!--FIRST LISTBOX END-->
+
+            <StackPanel Orientation="Vertical" Width="10"/>
+
+            <!--SECOND LISTBOX START-->
+            <StackPanel x:Name="sheets_list_box_panel" Orientation="Vertical" Width="50">
+                <ListBox x:Name="sheets_list_box"
+                         Height="400"
+                         Background="#A6C2E3"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         BorderBrush="Black"
+                         Margin="0,0,0,15">
+                </ListBox>
+
+            </StackPanel>
+            <!--SECOND LISTBOX END-->
+
+        </StackPanel>
+        <!--LISTBOX END-->
+
+        <!--BUTTONS START-->
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0">
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" x:Name="UI_Buttons_all_none"
+                        Margin="0,0,0,0">
+
+
+                <DockPanel HorizontalAlignment="Center">
+                    <CheckBox Margin="10,0,0,0" Content="Views"
+                              IsChecked="False" x:Name="views_selector"
+                              VerticalContentAlignment="Center" FontWeight="Heavy"/>
+
+                    <CheckBox Margin="20,0,0,0" Content="Sheets"
+                              IsChecked="False" x:Name="sheets_selector"
+                              VerticalContentAlignment="Center" FontWeight="Heavy"/>
+
+                    <Label Content="Search:" Margin="30,0,0,0"
+                           VerticalAlignment="Center"
+                           Foreground="Black"/>
+                    <TextBox x:Name="search"
+                             Text=""
+                             VerticalAlignment="Top"
+                             Margin="10,0,0,0" FontSize="14"
+                             BorderBrush="Black"
+                             Width="70"
+                             VerticalContentAlignment="Center"/>
+
+                </DockPanel>
+
+                <DockPanel Margin="0,0,0,0" HorizontalAlignment="Center">
+                    <!--BUTTON_1-->
+                    <Button x:Name="select_all" Content="Select All"
+                            Height="20"
+                            Width="100"
+                            Margin="5"/>
+                    <!--Click="button_select_all"-->
+                    <!--BUTTON_2-->
+                    <Button x:Name="select_none" Content="Select None"
+                            Height="20"
+                            Width="100"
+                            Margin="5"/>
+                    <!--Click="button_select_none"-->
+                </DockPanel>
+                <!--BUTTON_2-->
+                <Button x:Name="run_button"
+                        Content="Place Views on Sheets"
+
+                        Height="30"
+                        Width="210"
+                        Margin="5"
+                        Click="place_views"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+</Window>

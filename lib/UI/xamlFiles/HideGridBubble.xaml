@@ -1,0 +1,47 @@
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="Show/Hide Grid Bubble "
+        Height="150" Width="300"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+
+        ResizeMode="NoResize">
+
+    <StackPanel x:Name="Menu" Margin="5,10,5,10" Grid.ColumnSpan="2">
+
+
+        <StackPanel HorizontalAlignment="Center"  Margin="10,10,10,15" x:Name="UI_Stack_ViewTemplates" >
+
+            <CheckBox Content="Hide Left/Bottom Bubble" IsChecked="True" x:Name="check_object_start"
+                      Checked="checked"
+                      Unchecked="checked"
+                      FontWeight="Bold"/>
+
+            <CheckBox Content="Hide Right/Top Bubble" IsChecked="True" x:Name="check_object_end"
+                      Checked="checked"
+                      Unchecked="checked"
+                      FontWeight="Bold"
+            Margin="0,10,0,0"/>
+        </StackPanel>
+
+
+        <StackPanel x:Name="UI_stack_button">
+            <!--BUTTON-->
+
+            <Button x:Name="UI_btn_Run"
+
+                    Click="ui_button_run"
+                    Content="Close"
+                    Width="70" Height="25"/>
+        </StackPanel>
+
+    </StackPanel>
+
+
+</Window>
+

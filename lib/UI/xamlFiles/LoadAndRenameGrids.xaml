@@ -1,0 +1,43 @@
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="Load Saved Grids and Rename"
+        Height="120" Width="330"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+
+        ResizeMode="NoResize">
+    <StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10,15,0,0">
+            <Button Content="Load Grid" Width="80" Height="20" FontSize="11"/>
+            <ComboBox x:Name="load_option" Width="150" Height="20" Margin="10,0,0,0">
+                <ComboBoxItem Content="Item 1"/>
+                <ComboBoxItem Content="Item 2"/>
+                <ComboBoxItem Content="Item 3"/>
+            </ComboBox>
+            <Button x:Name="delete_option" Content="x" Width="25" Height="20" Margin="10,0,0,0"/>
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal">
+            <Button
+                    x:Name="rename_button"
+                    Content="Rename Grids"
+                    Width="100" Height="20"
+                    FontSize="11"
+
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+            <!--CLOSE BUTTON END-->
+        </StackPanel>
+
+    </StackPanel>
+
+
+</Window>

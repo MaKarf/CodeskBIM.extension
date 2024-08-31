@@ -1,0 +1,122 @@
+<Window
+        x:Name="main_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="Title"
+        Height="600" Width="320"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        Background="#E6ECF3"
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+
+        ResizeMode="NoResize">
+
+    <!--MAIN-->
+    <StackPanel>
+
+        <!--FILTER START-->
+        <DockPanel Grid.Row="1">
+            <Label Content="Filter:"
+                   VerticalAlignment="Top" Height="23"
+                   Foreground="Black"
+                   Margin="10,5,10,5"/>
+
+            <TextBox x:Name="textbox_filter"
+                     Text=""
+                     Height="22" VerticalAlignment="Top"
+
+                     Margin="10,8,10,5" FontSize="14"
+                     BorderBrush="Black">
+            </TextBox>
+        </DockPanel>
+        <!--FILTER END-->
+
+        <!--TOP ALLOWANCE PANEL TO ADD EXTRA FEATURES AT THE ABOVE THE LIST BOX-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="top_allowance_panel">
+            </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="top_error_message" Content=""
+                   Foreground="Red"/>
+            </StackPanel>
+
+
+        <!--LISTBOX START-->
+        <StackPanel Grid.Row="2"
+                    VerticalAlignment="Top"
+                    Margin="10,5,10,5">
+
+<!--            <Separator Background="Black"/>-->
+
+            <Label x:Name="selection_type_text_label" Content="Select Elements:"
+                   Foreground="Black"/>
+
+            <ListBox x:Name="main_list_box"
+                     Height="400" Grid.Row="0"
+                     Background="#A6C2E3"
+                     SelectionMode="Single"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     BorderBrush="Black">
+
+                <!--ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox x:Name="main_list_box_checkbox" Background="White" Foreground="Black"
+                                  IsChecked="{Binding IsChecked}">
+                            <TextBlock Text="{Binding Name}"/>
+                        </CheckBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate-->
+            </ListBox>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="bottom_error_message" Content=""
+                   Foreground="Red"/>
+            </StackPanel>
+
+            <!--BOTTOM ALLOWANCE PANEL TO ADD EXTRA FEATURES AT THE BELOW THE LISTBOX-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="bottom_allowance_panel">
+            </StackPanel>
+
+
+
+
+            <!--BUTTONS START-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="check_mode_panel">
+                <!--BUTTON_1-->
+                <Button x:Name="check_all"
+                        Content="Select All"
+                        Height="20"
+                        Width="100"
+                        Margin="5"
+                />
+                <!--BUTTON_2-->
+                <Button x:Name="check_none"
+                        Content="Select None"
+                        Height="20"
+                        Width="100"
+                        Margin="5"
+                />
+            </StackPanel>
+            <!--BUTTONS END-->
+
+
+
+
+
+            <!--BUTTON_2-->
+            <Button x:Name="finish_button"
+                    Content=""
+                    Height="30"
+                    Width="210"
+                    Margin="10"
+            />
+
+        </StackPanel>
+
+
+    </StackPanel>
+</Window>

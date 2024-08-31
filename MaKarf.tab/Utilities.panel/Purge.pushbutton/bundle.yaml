@@ -1,0 +1,11 @@
+title: "Purge\nUnused"
+
+Text: "Purge\nUnused"
+
+ToolTip: "A utility tool to delete all unused elements in the revit model"
+
+LongDescription: ""
+
+Context: zero-doc
+
+Author: "Agbodzah Makafui Christopher"

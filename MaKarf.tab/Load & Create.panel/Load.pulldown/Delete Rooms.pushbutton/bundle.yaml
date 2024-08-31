@@ -1,0 +1,11 @@
+title: "Delete\nRooms"
+
+Text: "Delete\nRooms"
+
+ToolTip: "Delete all rooms from revit database"
+
+LongDescription: ""
+
+Context: zero-doc
+
+Author: "Agbodzah Makafui Christopher"

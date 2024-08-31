@@ -1,0 +1,11 @@
+title: "Color\nPicker"
+
+Text: "ColorPicker"
+
+ToolTip: "Pick Color sample from the Revit UI"
+
+LongDescription: "This tool is used to pick exact color sample as \nseen in other Graphic Design software \nlike Photoshop"
+
+Context: zero-doc
+
+Author: "Agbodzah Makafui Christopher"

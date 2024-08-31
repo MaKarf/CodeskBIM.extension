@@ -1,0 +1,11 @@
+title: "Delete All Sheets"
+
+Text: "Delete All Sheets"
+
+ToolTip: "Delete All Sheets created in the Revit project"
+
+LongDescription: ""
+
+Context: zero-doc
+
+Author: "Agbodzah Makafui Christopher"

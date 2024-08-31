@@ -1,0 +1,75 @@
+{
+    "documents": {
+        "Project1": {
+            "doc_title": "Project1",
+            "project_info": {
+                "checked_by": "",
+                "street": "Nana Kesse Street",
+                "district": "Kumasi",
+                "designed_by": "Codesk",
+                "region": "Ashanti",
+                "locality": "Ayeduase",
+                "plot": "Plot No. 9A",
+                "client_name": "MaKarf",
+                "drawn_by": "Codesk",
+                "project_name": "Project 1",
+                "date": "May 2023"
+            },
+            "grids_selection_options": {}
+        },
+
+        "N.R_WD": {
+            "doc_title": "N.R_WD",
+            "project_info": {
+                "checked_by": "",
+                "street": "",
+                "district": "KWAHU SOUTH",
+                "designed_by": "EMMANUEL",
+                "region": "EASTERN",
+                "locality": "ATIBIE",
+                "plot": "",
+                "client_name": "MR. MICHAEL KWADO NTIAMOAH & MRS. VERA ANTWIWAA NTIAMOAH",
+                "drawn_by": "EMMANUEL",
+                "project_name": "FOUR BEDROOM RESIDENCE",
+                "date": "MAY 2023"
+            },
+            "grids_selection_options": {}
+        },
+
+        "Ralph_WD": {
+            "doc_title": "Ralph_WD",
+            "project_info": {
+                "checked_by": "",
+                "street": "",
+                "district": "",
+                "designed_by": "RICHFIELDS PROPERTIES",
+                "region": "GREATER ACCRA",
+                "locality": "EAST LEGON HILLS",
+                "plot": "",
+                "client_name": "RALPH",
+                "drawn_by": "EMMANUEL",
+                "project_name": "RESIDENCE",
+                "date": "MAY 2023"
+            },
+            "grids_selection_options": {}
+        },
+
+        "Modern Mini Village_WD": {
+            "doc_title": "Modern Mini Village_WD",
+            "project_info": {
+                "checked_by": "",
+                "street": "",
+                "district": "NINGO PRAMPRAM",
+                "designed_by": "EMMANUEL",
+                "region": "GREATER ACCRA",
+                "locality": "NEW-NINGO",
+                "plot": "",
+                "client_name": "MR. JOSEPH DUKU AMANKWAH",
+                "drawn_by": "EMMANUEL",
+                "project_name": "RESIDENCE",
+                "date": "MAY 2023"
+            },
+            "grids_selection_options": {}
+        }
+    }
+}
