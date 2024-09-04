@@ -3,8 +3,8 @@ from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory a
 from Autodesk.Revit.DB import Line, Transaction, XYZ, FillPatternElement, FilledRegion, FilledRegionType, \
     CurveLoop
 
-from lib.AppMethods import Alert
-from lib.ElementVisibility import is_visible_in_view
+from AppMethods import Alert
+from ElementVisibility import is_visible_in_view
 
 clr.AddReference("System")
 from System.Collections.Generic import List

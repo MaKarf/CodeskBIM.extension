@@ -1,5 +1,7 @@
 import clr
 
+from engine_type import get_engine_type, EngineType
+
 clr.AddReference("System.Xml")
 clr.AddReference("PresentationFramework")
 clr.AddReference("PresentationCore")
@@ -7,18 +9,13 @@ clr.AddReference("System")
 clr.AddReference('AdWindows')
 clr.AddReference("System.Windows.Forms")
 
-from lib.UI.xamlFiles.SetWPFColor import set_wpf_component_background_color
+from UI.xamlFiles.SetWPFColor import set_wpf_component_background_color
 
 from System.Windows import RoutedEventHandler
 from System.Windows.Input import KeyEventHandler
 
 """importing the WPF module"""
-try:
-    clr.AddReference("IronPython.Wpf")
-    import wpf
-except Exception:
-    clr.AddReferenceToFileAndPath(__WpfPath__)
-    import wpf
+from initialize import wpf, extension_path
 
 from os.path import join
 
@@ -33,27 +30,34 @@ from Autodesk.Revit.UI import UIApplication
 app = __revit__.Application
 ui_app = UIApplication(app)
 
+"""check if the command is being executed by pyrevit or CodeskBIMRevit add-in"""
+engine_type = get_engine_type()
+if engine_type == EngineType.codesk_engine:
+    base_window = Window
+else:
+    from pyrevit.forms import WPFWindow
+    base_window = WPFWindow
 
-class BaseWPFClass(Window):
+
+class BaseWPFClass(base_window):
     exited_with_close_button = True
 
     def __init__(self, xaml_file_name):
-
-        self.lock = True
-
         """load resource dictionary to the xaml file"""
-        xaml_folder = join(__basePath__, r'lib\UI\xamlFiles')
-
+        xaml_folder = join(extension_path, r'lib\UI\xamlFiles')
         styles_path = join(xaml_folder, "codeskbimWPFWindowStyles.xaml")
-
         """get full path for xaml file"""
         xaml_file_path = join(xaml_folder, xaml_file_name)
 
-        """load xaml file into the window"""
-        wpf.LoadComponent(self, xaml_file_path)
+        if engine_type == EngineType.codesk_engine:
+            """load xaml file into the window"""
+            wpf.LoadComponent(self, xaml_file_path)
 
-        """set revit window as its parent window"""
-        self.setup_owner()
+            """set revit window as its parent window"""
+            self.setup_owner()
+        else:
+            WPFWindow.__init__(self, xaml_file_path)
+
         self.Window = self
 
         """add resource dictionary"""
@@ -81,20 +85,7 @@ class BaseWPFClass(Window):
         self.exited_with_close_button = False
         self.Close()
 
-    def hide(self):
-        self.Hide()
 
-    def show(self, modal=False):
-        """Show window."""
-        if modal:
-            return self.ShowDialog()
-        # else open non-modal
-        self.Show()
-
-    def show_dialog(self):
-        """Show modal window."""
-        return self.ShowDialog()
-
-# path = r"E:\CodeskBIM Revit Addin Setup\pyCodeskKitchen\ksedoc\CodeskBIM.extension\lib\UI\xamlFiles\test.xaml"
+# path = "test.xaml"
 # ui = BaseWPFClass(path)
 # ui.ShowDialog()

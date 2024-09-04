@@ -10,7 +10,7 @@ from System.Windows.Controls import StackPanel, Orientation, Label, ComboBox, Co
 from System.Collections.Generic import List
 from System.Windows import Thickness
 
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

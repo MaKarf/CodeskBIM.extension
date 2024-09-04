@@ -1,3 +1,3 @@
-from lib.UI.xamlFiles.CreateSheets import CreateSheets
+from UI.xamlFiles.CreateSheets import CreateSheets
 CreateSheets()
 

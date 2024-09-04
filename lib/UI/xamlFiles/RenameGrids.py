@@ -1,7 +1,7 @@
 import clr
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.getView import get2DView, EnableRevealHiddenElements, DisableRevealHiddenElements
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from getView import get2DView, EnableRevealHiddenElements, DisableRevealHiddenElements
 
 clr.AddReference("System.Windows")
 from System.Windows import RoutedEventHandler

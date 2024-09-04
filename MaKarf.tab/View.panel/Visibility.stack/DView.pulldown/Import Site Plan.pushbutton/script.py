@@ -8,8 +8,8 @@ from Autodesk.Revit.DB import Transaction, FilteredElementCollector as Fec, Buil
 from Autodesk.Revit.Exceptions import OperationCanceledException
 from System.Collections.Generic import List
 
-from lib.UI.Popup import Alert
-from lib.files_path import version_specific_files_path
+from UI.Popup import Alert
+from files_path import version_specific_files_path
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

@@ -2,9 +2,9 @@ from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory a
     FamilyInstance
 from Autodesk.Revit.Exceptions import ArgumentException
 
-from lib.SortNatural import real_sorting
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from SortNatural import real_sorting
+from UI.Popup import Alert
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

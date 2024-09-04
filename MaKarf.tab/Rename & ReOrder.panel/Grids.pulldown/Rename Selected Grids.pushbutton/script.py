@@ -6,9 +6,9 @@ from Autodesk.Revit.DB import Transaction, FilteredElementCollector as Fec
 from Autodesk.Revit.Exceptions import OperationCanceledException
 from Autodesk.Revit.UI import TaskDialog
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.RenameGrids import RenameGrids
-from lib.selection.ui_selection import rectangular_selection_by_category
+from UI.Popup import Alert
+from UI.xamlFiles.RenameGrids import RenameGrids
+from selection.ui_selection import rectangular_selection_by_category
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

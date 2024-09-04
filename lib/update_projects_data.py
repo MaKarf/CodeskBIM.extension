@@ -2,7 +2,7 @@
 import json
 from Autodesk.Revit.DB import BuiltInParameter, FilteredElementCollector as Fec, BuiltInCategory as Bic
 
-from lib.files_path import files_path
+from files_path import files_path
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

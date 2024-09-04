@@ -1,9 +1,9 @@
 from Autodesk.Revit.DB import BuiltInCategory as Bic
 from Autodesk.Revit.DB import FilteredElementCollector as Fec
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.DropDownSelection import DropDownSelection
-from lib.titleBlocks import get_title_blocks, organize_sheets
+from UI.Popup import Alert
+from UI.xamlFiles.DropDownSelection import DropDownSelection
+from titleBlocks import get_title_blocks, organize_sheets
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

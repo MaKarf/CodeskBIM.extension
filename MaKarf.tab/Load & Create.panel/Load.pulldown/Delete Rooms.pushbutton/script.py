@@ -2,8 +2,8 @@ from Autodesk.Revit.DB import BuiltInCategory as Bic, FilteredElementCollector a
 
 import clr
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from UI.Popup import Alert
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
 
 
 clr.AddReference("System")

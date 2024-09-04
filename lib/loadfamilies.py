@@ -6,8 +6,8 @@ import clr
 
 from Autodesk.Revit.DB import IFamilyLoadOptions, FamilySource, Transaction
 
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
-from lib.files_path import version_specific_files_path
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from files_path import version_specific_files_path
 
 annotation_families_folder = version_specific_files_path.annotation_families
 

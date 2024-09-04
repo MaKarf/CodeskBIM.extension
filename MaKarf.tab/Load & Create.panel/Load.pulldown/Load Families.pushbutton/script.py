@@ -2,9 +2,9 @@ import os
 
 import clr
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
-from lib.loadfamilies import get_families_path, load_family
+from UI.Popup import Alert
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from loadfamilies import get_families_path, load_family
 
 clr.AddReference("System")
 from System.Windows import Visibility

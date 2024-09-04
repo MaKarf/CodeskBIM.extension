@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         HorizontalAlignment="Center"
         ResizeMode="NoResize"
-        MouseMove="mouse_move"
 >
 
     <Grid x:Name="grid" >
@@ -23,7 +22,7 @@
             <!-- This StackPanel is the container for the zoomable/pannable content. -->
             <!-- Any container control (StackPanel, DockPanel, Grid, etc) may be used here. -->
 
-        <Canvas x:Name="panel" HorizontalAlignment="Left" VerticalAlignment="Top" MouseWheel="zoom">
+        <Canvas x:Name="panel" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Canvas.RenderTransform>
                 <MatrixTransform x:Name="transform"/>
             </Canvas.RenderTransform>

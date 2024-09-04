@@ -1,8 +1,8 @@
 from Autodesk.Revit import DB
 from Autodesk.Revit.DB import ElementParameterFilter, BuiltInCategory, FilteredElementCollector, BuiltInParameter
 
-from lib.AppMethods import Alert
-from lib.loadfamilies import load_family
+from AppMethods import Alert
+from loadfamilies import load_family
 
 """imports"""
 from Autodesk.Revit.DB import ElementParameterFilter, FilteredElementCollector

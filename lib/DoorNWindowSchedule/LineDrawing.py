@@ -2,12 +2,12 @@ from Autodesk.Revit import DB
 from Autodesk.Revit.DB import Line, XYZ, BoundingBoxXYZ
 from Autodesk.Revit.Exceptions import ArgumentsInconsistentException
 
-from lib.DoorNWindowSchedule.Enumerations import IgnoreSidesOfRectangle, CodeskTextNoteType, \
+from DoorNWindowSchedule.Enumerations import IgnoreSidesOfRectangle, CodeskTextNoteType, \
     DoorsAndWindowsScheduleViewport, DoorsAndWindowsScheduleTextNote
-from lib.DoorNWindowSchedule.textNoteTypes import get_text_not_type
-from lib.DoorNWindowSchedule.transform import ClockwisePointRotation, line_through_points
-from lib.imports.DotNetSystem import List
-from lib.unitConvert import mm2ft, ft2mm
+from DoorNWindowSchedule.textNoteTypes import get_text_not_type
+from DoorNWindowSchedule.transform import ClockwisePointRotation, line_through_points
+from imports.DotNetSystem import List
+from unitConvert import mm2ft, ft2mm
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

@@ -3,10 +3,10 @@ import os.path
 import clr
 import xlrd
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.files_path import files_path
-from lib.loadfamilies import load_family
-from lib.titleBlocks import create_sheets, organize_sheets, get_title_blocks
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from files_path import files_path
+from loadfamilies import load_family
+from titleBlocks import create_sheets, organize_sheets, get_title_blocks
 
 clr.AddReference("System.Windows")
 from System.Windows.Controls import SelectionChangedEventHandler

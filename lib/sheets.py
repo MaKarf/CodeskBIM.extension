@@ -1,5 +1,5 @@
-from lib.SortNatural import real_sorting
-from lib.revit_app import doc
+from SortNatural import real_sorting
+from revit_app import doc
 from Autodesk.Revit.DB import BuiltInParameter as Bip, FilteredElementCollector as Fec, BuiltInCategory as Bic
 
 

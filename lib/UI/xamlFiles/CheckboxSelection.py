@@ -1,7 +1,7 @@
 import clr
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.UI.xamlFiles.forms import ListItem
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.forms import ListItem
 
 clr.AddReference("System.Windows.Forms")
 clr.AddReference("System")

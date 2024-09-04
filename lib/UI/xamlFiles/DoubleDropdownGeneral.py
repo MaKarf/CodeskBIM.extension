@@ -1,8 +1,8 @@
 import clr
 from System.Collections.Generic import List
 
-from lib.SortNatural import real_sorting
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from SortNatural import real_sorting
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 clr.AddReference("System.Windows")
 from System.Windows.Controls import SelectionChangedEventHandler, ComboBoxItem

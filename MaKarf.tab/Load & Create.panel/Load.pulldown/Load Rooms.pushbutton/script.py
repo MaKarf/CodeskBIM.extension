@@ -1,10 +1,10 @@
-from lib.files_path import files_path
+from files_path import files_path
 
 import xlrd
 from Autodesk.Revit.DB import BuiltInCategory as Bic, FilteredElementCollector as Fec, Transaction
 
-from lib.UI.xamlFiles.DropDownSelection import DropDownSelection
-from lib.AppMethods import Alert
+from UI.xamlFiles.DropDownSelection import DropDownSelection
+from AppMethods import Alert
 
 ui_doc = __revit__.ActiveUIDocument
 doc = __revit__.ActiveUIDocument.Document

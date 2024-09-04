@@ -1,4 +1,4 @@
-from lib.AppMethods import Alert as CodeskAlert
+from initialize import Alert as CodeskAlert, CopyColor as CodeskCopyColorToClipboard
 
 
 class Alert:

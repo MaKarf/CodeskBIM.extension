@@ -5,9 +5,9 @@ from Autodesk.Revit import DB
 from Autodesk.Revit.DB import BuiltInCategory as Bic, FilteredElementCollector as Fec, Transaction, BuiltInCategory, \
     ElementCategoryFilter, Line, XYZ, BoundingBoxXYZ
 
-from lib.SortNatural import real_sorting
-from lib.phases import new_construction_phase
-from lib.unitConvert import mm2ft, ft2mm
+from SortNatural import real_sorting
+from phases import new_construction_phase
+from unitConvert import mm2ft, ft2mm
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

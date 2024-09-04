@@ -3,13 +3,13 @@ from Autodesk.Revit.DB import Transaction
 from Autodesk.Revit.DB import XYZ, Line, Grid, FilteredElementCollector as Fec, BuiltInCategory as Bic
 from System.Collections.Generic import List
 
-from lib.UI.xamlFiles.DoubleTextBox import DoubleTextBox
-from lib.UI.xamlFiles.RenameGrids import RenameGridsEngine
-from lib.codeskResource.codeskUnitConverter import ft2mm
-from lib.selection.getModelElements import GetModelElements
-from lib.selection.ui_selection import rectangular_selection
+from UI.xamlFiles.DoubleTextBox import DoubleTextBox
+from UI.xamlFiles.RenameGrids import RenameGridsEngine
+from codeskResource.codeskUnitConverter import ft2mm
+from selection.getModelElements import GetModelElements
+from selection.ui_selection import rectangular_selection
 
-from lib.unitConvert import mm2ft
+from unitConvert import mm2ft
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

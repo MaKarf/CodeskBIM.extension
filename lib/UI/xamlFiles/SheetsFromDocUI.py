@@ -2,7 +2,7 @@ import clr
 from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory as Bic
 from System.Collections.Generic import List
 
-from lib.SortNatural import real_sorting
+from SortNatural import real_sorting
 
 clr.AddReference("System.Xml")
 clr.AddReference("PresentationFramework")
@@ -15,7 +15,7 @@ from System.Windows.Controls import StackPanel, Orientation, TextBox, Label, Com
 from System.Windows import RoutedEventHandler, Thickness
 from System.Windows import Visibility
 
-from lib.UI.xamlFiles.DropDownSelection import DropDownSelection
+from UI.xamlFiles.DropDownSelection import DropDownSelection
 
 
 class SheetsFromDocUI(DropDownSelection):

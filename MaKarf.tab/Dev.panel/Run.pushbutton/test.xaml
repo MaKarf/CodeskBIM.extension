@@ -1,0 +1,43 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title=""
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+        ResizeMode="NoResize"
+        MouseMove="mouse_move"
+>
+
+    <Grid x:Name="grid" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- This ScrollViewer enables the panning -->
+<!--        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">-->
+
+            <!-- This StackPanel is the container for the zoomable/pannable content. -->
+            <!-- Any container control (StackPanel, DockPanel, Grid, etc) may be used here. -->
+
+        <Canvas x:Name="panel" HorizontalAlignment="Left" VerticalAlignment="Top" MouseWheel="zoom">
+            <Canvas.RenderTransform>
+                <MatrixTransform x:Name="transform"/>
+            </Canvas.RenderTransform>
+
+            <Image Panel.ZIndex="1" Name="image" Stretch="Uniform"/>
+            <Button Panel.ZIndex="2" x:Name="txt" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top"
+                    Width="120" FontSize="11"/>
+
+
+        </Canvas>
+
+<!--        </ScrollViewer>-->
+
+    </Grid>
+
+
+</Window>

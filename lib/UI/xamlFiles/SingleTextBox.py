@@ -1,7 +1,7 @@
 import clr
 
-from lib.SortNatural import real_sorting
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from SortNatural import real_sorting
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 clr.AddReference("System.Windows")
 from System.Windows.Controls import SelectionChangedEventHandler
@@ -57,7 +57,7 @@ class DropDownSelection(BaseWPFClass):
 
 """ How to use the Class"""
 
-"""from lib.UI.xamlFiles.DropDownSelection import DropDownSelection
+"""from UI.xamlFiles.DropDownSelection import DropDownSelection
 
 # create a dictionary of 'name':'item name in list, 'object':'item object for post process'
 dropdown_list = [{"name": "Item {}".format(i), "object": i} for i in range(10)]

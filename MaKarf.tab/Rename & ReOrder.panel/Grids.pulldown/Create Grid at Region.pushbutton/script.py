@@ -5,10 +5,10 @@ from Autodesk.Revit.DB import Transaction
 from Autodesk.Revit.Exceptions import OperationCanceledException
 from System.Collections.Generic import List
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.RenameGrids import RenameGridsEngine
-from lib.codeskResource.codeskUnitConverter import ft2mm
-from lib.selection.select_from_ui import rectangular_selection
+from UI.Popup import Alert
+from UI.xamlFiles.RenameGrids import RenameGridsEngine
+from codeskResource.codeskUnitConverter import ft2mm
+from selection.select_from_ui import rectangular_selection
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

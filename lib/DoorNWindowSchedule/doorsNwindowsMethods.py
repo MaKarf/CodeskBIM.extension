@@ -5,9 +5,9 @@ from Autodesk.Revit.DB import Color, FilteredElementCollector as Fec, BuiltInCat
     ViewFamily, ElementId, FamilyInstance
 from System.Collections.Generic import List
 
-from lib.UI.xamlFiles.CheckBoxAndDropdown import CheckBoxAndDropdown
-from lib.codeskResource.loadfamilies import get_families_path, load_family
-from lib.searchElement import string_search_get_element_type_by_class_name
+from UI.xamlFiles.CheckBoxAndDropdown import CheckBoxAndDropdown
+from codeskResource.loadfamilies import get_families_path, load_family
+from searchElement import string_search_get_element_type_by_class_name
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

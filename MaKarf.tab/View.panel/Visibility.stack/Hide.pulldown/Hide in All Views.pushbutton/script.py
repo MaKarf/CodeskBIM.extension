@@ -1,4 +1,4 @@
-from lib.selection.ui_selection import hide_selection
+from selection.ui_selection import hide_selection
 from Autodesk.Revit.UI.Selection import ObjectType
 from Autodesk.Revit.DB import Transaction, ElementId, Color
 from Autodesk.Revit.Exceptions import OperationCanceledException

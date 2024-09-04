@@ -1,13 +1,13 @@
 import os
 
-from lib.UI.xamlFiles.RenumberSheetsUI import RenumberSheetsUI
+from UI.xamlFiles.RenumberSheetsUI import RenumberSheetsUI
 
 from Autodesk.Revit.DB import Transaction, ViewSheet, FilteredElementCollector as fec, BuiltInCategory as bic
 
-from lib.SortNatural import real_sorting
+from SortNatural import real_sorting
 
-from lib.UI.xamlFiles.RenumberSheetsPrefix import RenumberSheetsPrefix
-from lib.sheets import get_ordered_sheets_as_dict
+from UI.xamlFiles.RenumberSheetsPrefix import RenumberSheetsPrefix
+from sheets import get_ordered_sheets_as_dict
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

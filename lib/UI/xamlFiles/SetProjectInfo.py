@@ -1,7 +1,7 @@
 import clr
 from Autodesk.Revit.UI import TaskDialog
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 clr.AddReference("System.Windows.Forms")
 
@@ -12,7 +12,7 @@ import os
 
 from Autodesk.Revit.DB import BuiltInParameter, Transaction
 from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory as Bic
-from lib.update_projects_data import ProjectData
+from update_projects_data import ProjectData
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

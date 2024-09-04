@@ -4,8 +4,8 @@ from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory a
 
 from System.Collections.Generic import List
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.DropDownSelection import DropDownSelection
+from UI.Popup import Alert
+from UI.xamlFiles.DropDownSelection import DropDownSelection
 
 doc = __revit__.ActiveUIDocument.Document
 

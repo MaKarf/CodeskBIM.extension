@@ -21,5 +21,3 @@
 # 
 # """get the AppMethod class from c#"""
 # 
-
-print("Hello mjjjj")

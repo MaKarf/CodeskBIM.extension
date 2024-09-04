@@ -1,12 +1,4 @@
-import clr
-
-""" add a reference to your C# .dll"""
-clr.AddReferenceToFileAndPath(__codeskDLL__)
-
-""" import CodeskBIMRevit namespaces from the C# .dll"""
-from CodeskBIMRevit import Alert as CodeskAlert, CopyColor as CodeskCopyColorToClipboard
-
-"""get the AppMethod class from c#"""
+from initialize import Alert as CodeskAlert, CopyColor as CodeskCopyColorToClipboard
 
 
 class Alert:
