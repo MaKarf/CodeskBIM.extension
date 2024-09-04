@@ -5,6 +5,8 @@ import clr
 from UI.Popup import Alert
 from UI.xamlFiles.CheckboxSelection import CheckboxSelection
 
+from UI.xamlFiles.CheckBoxAndDropdown import CheckBoxAndDropdown
+from UI.xamlFiles.Groupings import group_data
 
 clr.AddReference("System")
 from System.Windows import Visibility
@@ -13,13 +15,12 @@ ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document
 t = Transaction(doc, "Revit Transaction")
 
-
-rooms = Fec(doc).OfCategory(Bic.OST_Rooms).WhereElementIsNotElementType().ToElementIds()
+rooms = Fec(doc).OfCategory(Bic.OST_Rooms).WhereElementIsNotElementType().ToElements()
 
 if len(rooms) != 0:
-    item = [{"name": doc.GetElement(room).LookupParameter("Name").AsString(), "element": room} for room in rooms]
 
-    ui = CheckboxSelection(item)
+    data = group_data(rooms)
+    ui = CheckBoxAndDropdown(dropdown_list=data, finish_button_text_name="Delete")
 
     """hide the error text label if not in used"""
     ui.top_error_message.Visibility = Visibility.Collapsed
@@ -32,11 +33,10 @@ if len(rooms) != 0:
         with Transaction(doc, "Delete Rooms") as tx:
             tx.Start()
 
-            for i in rooms:
-                doc.Delete(i)
+            for i in selected_rooms:
+                doc.Delete(i.Id)
             tx.Commit()
 
 
 else:
     Alert(title="Notification", header="No Rooms found in the Project", content="")
-
