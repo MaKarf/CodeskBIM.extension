@@ -1,10 +1,10 @@
 import clr
 
-from lib.SortNatural import real_sorting
-from lib.UI.xamlFiles.SetWPFColor import set_wpf_component_background_color
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.getView import get2DView
-from lib.imports.DotNetSystem import List
+from SortNatural import real_sorting
+from UI.xamlFiles.SetWPFColor import set_wpf_component_background_color
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from getView import get2DView
+from imports.DotNetSystem import List
 
 clr.AddReference("System.Windows")
 from System.Windows import RoutedEventHandler, Media

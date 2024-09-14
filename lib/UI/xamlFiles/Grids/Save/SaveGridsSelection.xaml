@@ -1,0 +1,51 @@
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="Save Grids"
+        Height="170" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        Background="#A6C2E3"
+        mc:Ignorable="d"
+        HorizontalAlignment="Center"
+
+        ResizeMode="NoResize">
+
+
+    <StackPanel Margin="5,5,5,15" Grid.ColumnSpan="2">
+
+        <DockPanel Margin="20,5,10,0">
+            <TextBlock Text="" x:Name="ui_hint" VerticalAlignment="Center" Foreground="Red" HorizontalAlignment="Center"/>
+        </DockPanel>
+
+        <DockPanel Margin="20,5,50,0">
+            <TextBlock Text="Option name"
+                       Margin="0,0,10,2"
+                       VerticalAlignment="Center"
+                       Width="80"/>
+
+            <TextBox x:Name="ui_option_name"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Height="24"
+                     KeyUp="check_name"/>
+        </DockPanel>
+
+
+        <Button x:Name="button_run"
+
+                Height="30"
+                Width="150"
+
+                Margin="90, 15, 50 ,10"
+                FontWeight="Bold"
+                Content="Save Selection"
+                Click="button_click_run"
+        />
+    </StackPanel>
+
+
+</Window>
+

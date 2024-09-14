@@ -1,6 +1,6 @@
 import os
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 import clr
 

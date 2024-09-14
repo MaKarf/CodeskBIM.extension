@@ -3,13 +3,15 @@ from Autodesk.Revit.DB import Transaction
 from Autodesk.Revit.DB import XYZ, Line, Grid, FilteredElementCollector as Fec, BuiltInCategory as Bic
 from System.Collections.Generic import List
 
-from lib.UI.xamlFiles.DoubleTextBox import DoubleTextBox
-from lib.UI.xamlFiles.RenameGrids import RenameGridsEngine
-from lib.codeskResource.codeskUnitConverter import ft2mm
-from lib.selection.getModelElements import GetModelElements
-from lib.selection.ui_selection import rectangular_selection
+from UI.xamlFiles.DoubleTextBox import DoubleTextBox
+from UI.xamlFiles.Grids.CommonImports import SelectionType
+from UI.xamlFiles.Grids.Rename.RenameGrids import RenameGrids
 
-from lib.unitConvert import mm2ft
+from codeskResource.codeskUnitConverter import ft2mm
+from selection.getModelElements import GetModelElements
+from selection.ui_selection import rectangular_selection
+
+from unitConvert import mm2ft
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument
@@ -28,6 +30,8 @@ class SelectElement:
 
     v_walls = []
     h_walls = []
+
+    main_grids = []
 
     boundary_lines = List[DB.ElementId]()
 
@@ -184,6 +188,7 @@ class SelectElement:
                 line = Line.CreateBound(vertical_start_point, vertical_end_point)
 
                 created_grid = Grid.Create(doc, line)
+                self.main_grids.append(created_grid)
 
                 """adjust grids height using bounding box"""
                 created_grid.SetVerticalExtents(0, self.max_z)
@@ -202,6 +207,7 @@ class SelectElement:
 
                 line = Line.CreateBound(vertical_start_point, vertical_end_point)
                 new_v_grid = Grid.Create(doc, line)
+                self.main_grids.append(new_v_grid)
 
                 """adjust grids height using bounding box"""
                 new_v_grid.SetVerticalExtents(0, self.max_z)
@@ -209,16 +215,6 @@ class SelectElement:
                 new_v_grid.Name = prev_grid_name
 
                 """ PARAMETERS FOR EXTENDING GRIDS START AND END POINTS INSTEAD OF DELETING AND RECREATING """
-                # existing_grids_start_line = prev_grid.GetCurvesInView(DB.DatumExtentType.Model, active_view)[0]
-                #
-                # existing_grids_start_point = existing_grids_start_line.GetEndPoint(0)
-                # existing_grids_end_point = existing_grids_start_line.GetEndPoint(1)
-                #
-                # print(existing_grids_start_point)
-                # print(existing_grids_end_point)
-                #
-                # existing_grids_start_line.GetEndPoint(0) = vertical_start_point
-                # existing_grids_start_line.GetEndPoint(1) = vertical_end_point
 
         for h_wall in self.h_walls:
             grid_y_axis = h_wall.Location.Curve.Origin[1]
@@ -232,6 +228,8 @@ class SelectElement:
                 line = Line.CreateBound(horizontal_start_point, horizontal_end_point)
 
                 grid = Grid.Create(doc, line)
+                self.main_grids.append(grid)
+
                 doc.GetElement(grid.GetTypeId()).LookupParameter("Plan View Symbols End 1 (Default)").Set(1)
 
                 """adjust grids height using bounding box"""
@@ -253,18 +251,18 @@ class SelectElement:
                 line = Line.CreateBound(horizontal_start_point, horizontal_end_point)
 
                 new_h_grid = Grid.Create(doc, line)
+                self.main_grids.append(new_h_grid)
+
                 new_h_grid.Name = prev_grid_name
 
                 """adjust grids height using bounding box"""
                 new_h_grid.SetVerticalExtents(0, self.max_z)
 
         t.Commit()
-        # except Exception as e:
-        #     Alert(title="Error", header="Unknown Error",
-        #           content=str(e))
-        #     t.RollBack()
-        #     sys.exit()
 
 
-SelectElement()
-RenameGridsEngine()
+created_grids = SelectElement()
+
+ui = RenameGrids(selection_type=SelectionType.select_from_list,
+                 include_hidden_grids=None,
+                 list_of_grids=created_grids.main_grids)

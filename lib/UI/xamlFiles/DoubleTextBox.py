@@ -1,6 +1,6 @@
 import clr
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 clr.AddReference("System.Windows")
 

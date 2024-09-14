@@ -8,9 +8,11 @@ doc = ui_doc.Document
 active_view = ui_doc.ActiveView
 
 
-def rectangular_selection_by_category(built_in_category=None, elements=True):
+def rectangular_selection_by_category(built_in_category=None, as_elements=True, temp_bg_color=None):
     bg_color = Color(app.BackgroundColor.Red, app.BackgroundColor.Green, app.BackgroundColor.Blue)
-    selection_bg_color = Color(247, 191, 158)
+    selection_bg_color = Color(247, 191, 158) if temp_bg_color is None else Color(temp_bg_color.Red,
+                                                                                  temp_bg_color.Green,
+                                                                                  temp_bg_color.Blue)
 
     el = Fec(doc).OfCategory(built_in_category).WhereElementIsNotElementType().FirstElement()
 
@@ -25,14 +27,14 @@ def rectangular_selection_by_category(built_in_category=None, elements=True):
                 selection_filter = ElementSelectFilter([int(category_id)])
                 selected_references = ui_doc.Selection.PickObjects(ObjectType.Element, selection_filter)
 
-            if elements:
+            if as_elements:
                 app.BackgroundColor = bg_color
                 return [doc.GetElement(ref) for ref in selected_references]
             else:
                 app.BackgroundColor = bg_color
                 return list(selected_references)
 
-        except OperationCanceledException:
+        except OperationCanceledException:  # user_interrupt
             app.BackgroundColor = bg_color
             return None
     else:

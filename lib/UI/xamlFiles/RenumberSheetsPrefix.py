@@ -1,4 +1,4 @@
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass, RoutedEventHandler, KeyEventHandler
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass, RoutedEventHandler, KeyEventHandler
 
 
 class RenumberSheetsPrefix(BaseWPFClass):

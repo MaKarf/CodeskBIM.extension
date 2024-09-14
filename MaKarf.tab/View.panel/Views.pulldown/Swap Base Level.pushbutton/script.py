@@ -4,8 +4,8 @@ from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory a
 
 from System.Collections.Generic import List
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.DropDownSelection import DropDownSelection
+from UI.Popup import Alert
+from UI.xamlFiles.DropDownSelection import DropDownSelection
 
 doc = __revit__.ActiveUIDocument.Document
 
@@ -140,13 +140,13 @@ collected_levels = Fec(doc).OfCategory(Bic.OST_Levels).WhereElementIsNotElementT
 ui_data_list = [{"name": i.Name, "element": i.Name} for i in collected_levels]
 
 current_level_ui = DropDownSelection(title="Change Level", label_name="Current Level", dropdown_list=ui_data_list)
-current_level_nam = current_level_ui.selected_item
+current_level_nam = current_level_ui.selected_item.Value
 
 if current_level_nam is not None:
     ui_data_list.remove({"name": current_level_nam, "element": current_level_nam})
 
     new_level_ui = DropDownSelection(title="Change Level", label_name="New Level", dropdown_list=ui_data_list)
-    new_level_nam = new_level_ui.selected_item
+    new_level_nam = new_level_ui.selected_item.Value
 
     # print current_level_nam
     # print new_level_nam

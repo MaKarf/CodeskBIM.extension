@@ -5,10 +5,10 @@ from Autodesk.Revit.DB import BuiltInCategory, Transaction, ElementId, Category,
 from Autodesk.Revit.Exceptions import ArgumentException, InvalidOperationException
 from Autodesk.Revit.UI import UIApplication
 
-from lib.SortNatural import real_sorting
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
-from lib.familyCategories import family_categories
+from SortNatural import real_sorting
+from UI.Popup import Alert
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from familyCategories import family_categories
 
 app = __revit__.Application
 ui_app = UIApplication(app)

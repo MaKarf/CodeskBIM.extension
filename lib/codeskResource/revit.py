@@ -1,6 +1,6 @@
 import sys
 
-from lib.UI.Popup import Alert
+from UI.Popup import Alert
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

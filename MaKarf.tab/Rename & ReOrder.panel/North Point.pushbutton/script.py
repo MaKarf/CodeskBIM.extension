@@ -1,7 +1,7 @@
 from Autodesk.Revit.DB import BuiltInCategory as Bic
 from Autodesk.Revit.DB import FilteredElementCollector as Fec
 from Autodesk.Revit.DB import Transaction
-from lib.UI.Popup import Alert
+from UI.Popup import Alert
 
 ui_doc = __revit__.ActiveUIDocument
 doc = __revit__.ActiveUIDocument.Document

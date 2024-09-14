@@ -10,7 +10,7 @@ import os
 from Autodesk.Revit.DB import Transaction
 from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory as Bic
 import xlsxwriter
-from lib.UI.Popup import Alert
+from UI.Popup import Alert
 
 ui_doc = __revit__.ActiveUIDocument
 doc = __revit__.ActiveUIDocument.Document

@@ -1,7 +1,7 @@
 from Autodesk.Revit.DB import *
 from System.Collections.Generic import List
 
-from lib.UI.Popup import Alert
+from UI.Popup import Alert
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

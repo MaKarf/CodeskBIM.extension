@@ -1,4 +1,4 @@
-from lib.UI.xamlFiles.ColorPickerWindow import ColorPickerWindow
+from UI.xamlFiles.ColorPickerWindow import ColorPickerWindow
 from Autodesk.Revit.DB import Color
 
 app = __revit__.Application

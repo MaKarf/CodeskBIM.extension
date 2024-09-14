@@ -1,7 +1,10 @@
 import clr
 
-from lib.AppMethods import CopyColorToClipboard
-from lib.UI.Popup import Alert
+from initialize import wpf, extension_path, app
+from AppMethods import CopyColorToClipboard
+from UI.Popup import Alert
+
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 clr.AddReference("System.Xml")
 clr.AddReference("PresentationFramework")
@@ -12,24 +15,10 @@ clr.AddReference("System.Drawing")
 clr.AddReference('AdWindows')
 
 try:
-    app = __revit__.Application
+    # app = __revit__.Application
     version = app.VersionNumber
 except:
     version = "2021"
-
-wpf_assembly_name = "IronPython.Wpf"
-codesk_assembly_name = "CodeskBIMRevit{}".format(version)
-
-try:
-    clr.AddReference(wpf_assembly_name)
-    clr.AddReference(codesk_assembly_name)
-    import wpf
-except:
-    clr.AddReferenceToFileAndPath(__codeskDLL__)
-    clr.AddReferenceToFileAndPath(__codeskDLL__.replace(codesk_assembly_name, wpf_assembly_name))
-    import wpf
-
-from CodeskBIMRevit.FilesPath import extension_path
 
 from Microsoft.Win32.SafeHandles import SafeFileHandle
 
@@ -38,9 +27,9 @@ import Autodesk.Windows as AutodeskWindows
 import System
 from System.IO import MemoryStream
 from System import Uri
-from System.Drawing import Bitmap, Graphics, Image
+from System.Drawing import Bitmap, Graphics, Image, Point
 from System.Windows import Window, WindowStyle, WindowState, Interop, Thickness, ResourceDictionary, Media, \
-    RoutedEventHandler, Point
+    RoutedEventHandler  # , Point
 from System.Windows.Forms import Cursor, Screen, Clipboard
 from System.Windows.Media.Imaging import BitmapImage
 # from System.Windows.Media import Point
@@ -49,31 +38,12 @@ from System.Windows.Input import MouseButtonEventArgs, MouseWheelEventArgs
 from os.path import join
 
 
-class ColorPickerWindow(Window):
+class ColorPickerWindow(BaseWPFClass):
 
     def __init__(self):
-        """load resource dictionary to the xaml file"""
-
-        self.xaml_folder = join(extension_path, r'lib\UI\xamlFiles')
-
-        styles_path = join(self.xaml_folder, "codeskbimWPFWindowStyles.xaml")
-
-        """get full path for xaml file"""
-        xaml_file_path = join(self.xaml_folder, "ColorPickerWindow.xaml")
-
-        """load xaml file into the window"""
-        wpf.LoadComponent(self, xaml_file_path)
-
-        """add resource dictionary"""
-        r = ResourceDictionary()
-        r.Source = Uri(styles_path)
-        self.Resources = r
+        BaseWPFClass.__init__(self, "ColorPickerWindow.xaml")
 
         self.set_cursor()
-
-        """set revit window as its parent window"""
-        wih = Interop.WindowInteropHelper(self)
-        wih.Owner = AutodeskWindows.ComponentManager.ApplicationWindow
 
         self.AllowsTransparency = True
         self.Background = Media.Brushes.Transparent
@@ -100,16 +70,10 @@ class ColorPickerWindow(Window):
         self.mouse_move("sender", "e")
         self.ShowDialog()
 
-    def set_contrasting_text_color(self):
-        background_color = self.txt.Background.Color
-        # print background_color
-        luminance = 0.299 * background_color.R + 0.587 * background_color.G + 0.114 * background_color.B
-        # print luminance
-        text_color = Media.Colors.White if luminance < 128 else Media.Colors.Black
-
-        color_brush = Media.Color.FromArgb(text_color.A, text_color.R, text_color.G, text_color.B)
-        self.txt.Foreground = Media.SolidColorBrush(text_color)
-        self.txt.BorderBrush = Media.SolidColorBrush(text_color)
+    def set_contrasting_text_color(self, color):
+        luminance = ((0.299 * color[0]) + (0.587 * color[1]) + (0.114 * color[2])) / 255
+        text_color = Media.Colors.White if luminance < 0.5 else Media.Colors.Black
+        self.fg_btn.Foreground = Media.SolidColorBrush(text_color)
 
     def set_background_image_from_screenshot(self):
         """Capture a screenshot of the primary screen"""
@@ -189,29 +153,27 @@ class ColorPickerWindow(Window):
 
         """set background color"""
         media_color = Media.Color.FromArgb(color[0], color[1], color[2], color[3])
-        self.txt.Background = Media.SolidColorBrush(media_color)
-
-        self.txt.Margin = Thickness(h_offset, v_offset, 0, 0)
+        self.borderBtnAdd.Background = Media.SolidColorBrush(media_color)
+        self.borderBtnAdd.Margin = Thickness(h_offset, v_offset, 0, 0)
         self.rgb_color = "R:{1} G:{2} B:{3}".format(color[0], color[1], color[2], color[3])
         self.hex_color = self.argb_to_hex(color)
-
-        self.txt.Content = "{}\n\n{}".format(self.rgb_color, self.hex_color)
-        self.set_contrasting_text_color()
+        self.fg_btn.Content = "{}\n\n{}".format(self.rgb_color, self.hex_color)
+        self.set_contrasting_text_color(color)
 
     def capture_color(self, exit_operation):
         """Get the current mouse cursor position"""
         mouse_position = Cursor.Position
 
         """Capture the color at the mouse cursor position"""
-        with System.Drawing.Bitmap(1, 1) as screen:
-            with System.Drawing.Graphics.FromImage(screen) as g:
-                g.CopyFromScreen(mouse_position, System.Drawing.Point.Empty, System.Drawing.Size(1, 1))
-                picked_color = screen.GetPixel(0, 0)
-                color = (picked_color.A, picked_color.R, picked_color.G, picked_color.B)
+        screen = System.Drawing.Bitmap(1, 1)
+        graphics = System.Drawing.Graphics.FromImage(screen)
+        graphics.CopyFromScreen(mouse_position, System.Drawing.Point.Empty, System.Drawing.Size(1, 1))
+        picked_color = screen.GetPixel(0, 0)
+        color = (picked_color.A, picked_color.R, picked_color.G, picked_color.B)
 
-                if exit_operation:
-                    self.Close()
-                return color
+        if exit_operation:
+            self.Close()
+        return color
 
     def mouse_right_button_down_handler(self, sender, e):
         self.Close()
@@ -246,7 +208,8 @@ class ColorPickerWindow(Window):
 
     def set_cursor(self):
         """Load your custom cursor image from a file"""
-        cursor_image = Image.FromFile(join(self.xaml_folder, "cursor.png"))
+        icon_path = join(extension_path, r'lib\UI\xamlFiles\cursor.png')
+        cursor_image = Image.FromFile(icon_path)
 
         """Create a custom cursor from the image"""
         custom_cursor = cursor_image.GetHicon()

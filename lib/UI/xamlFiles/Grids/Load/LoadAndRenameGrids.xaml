@@ -17,9 +17,9 @@
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10,15,0,0">
             <Button Content="Load Grid" Width="80" Height="20" FontSize="11"/>
             <ComboBox x:Name="load_option" Width="150" Height="20" Margin="10,0,0,0">
-                <ComboBoxItem Content="Item 1"/>
-                <ComboBoxItem Content="Item 2"/>
-                <ComboBoxItem Content="Item 3"/>
+<!--                <ComboBoxItem Content="Item 1"/>-->
+<!--                <ComboBoxItem Content="Item 2"/>-->
+<!--                <ComboBoxItem Content="Item 3"/>-->
             </ComboBox>
             <Button x:Name="delete_option" Content="x" Width="25" Height="20" Margin="10,0,0,0"/>
         </StackPanel>

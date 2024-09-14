@@ -3,8 +3,8 @@ from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory a
 from Autodesk.Revit.DB import Line, Transaction, XYZ, FillPatternElement, FilledRegion, FilledRegionType, \
     CurveLoop
 
-from lib.AppMethods import Alert
-from lib.ElementVisibility import is_visible_in_view
+from AppMethods import Alert
+from ElementVisibility import is_visible_in_view
 
 clr.AddReference("System")
 from System.Collections.Generic import List
@@ -52,8 +52,7 @@ def create_lines(plan_view):
                         curve_loop.Append(line)
 
                     curve_loop_list.Add(curve_loop)
-                else:
-                    Alert(header="Cannot create outlines from this column")
+
     return curve_loop_list
 
 
@@ -137,9 +136,13 @@ def delete_filled_regions():
     t.Commit()
 
 
-views = Fec(doc).OfCategory(Bic.OST_Views).WhereElementIsNotElementType().ToElements()
-selected_views = [view for view in views if view.ViewType == ViewType.FloorPlan and not view.IsTemplate]
+if columns:
+    views = Fec(doc).OfCategory(Bic.OST_Views).WhereElementIsNotElementType().ToElements()
+    selected_views = [view for view in views if view.ViewType == ViewType.FloorPlan and not view.IsTemplate]
 
-map(create_filled_region, selected_views)
+    map(create_filled_region, selected_views)
 
-# delete_filled_regions()
+    # delete_filled_regions()
+
+else:
+    Alert(title="No Column", header="No Structural Column found", content="")

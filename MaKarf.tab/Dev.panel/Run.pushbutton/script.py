@@ -1,25 +1,24 @@
-# from Autodesk.Revit.UI import UIApplication
-# 
-# app = __revit__.Application
-# ui_doc = __revit__.ActiveUIDocument
-# doc = ui_doc.Document
-# 
-# uiApp = UIApplication(app)
-# 
-# # try:
-# #     uiApp.LoadAddIn(r"C:\Users\Debbie\AppData\Roaming\Autodesk\Revit\Addins\2021\CodeskBIMRevit.addin")
-# # except Exception as ex:
-# #     print(ex)
-# 
-# import clr
-# 
-# """ add a reference to your C# .dll"""
-# clr.AddReferenceToFileAndPath(__codeskDLL__)
-# 
-# """ import CodeskBIMRevit namespaces from the C# .dll"""
-# from CodeskBIMRevit import Alert as CodeskAlert, CopyColorToClipboard as CodeskCopyColorToClipboard
-# 
-# """get the AppMethod class from c#"""
-# 
+from UI.xamlFiles.Grids.CommonImports import SelectionType
+from UI.xamlFiles.Grids.Rename.RenameGrids import RenameGrids
 
-print("Hello mjjjj")
+
+mk = RenameGrids(SelectionType.select_from_db, include_hidden_grids=False)
+# mk = RenameGrids(SelectionType.select_from_ui)
+# mk = RenameGrids(SelectionType.select_from_options)
+
+# from UI.xamlFiles.Grids.CommonImports import t, active_view
+# from getView import EnableRevealHiddenElements
+#
+# t.Start()
+# """reveal hidden elements before selecting grids from view to capture hidden ones as well"""
+# EnableRevealHiddenElements(active_view)
+#
+# # DisableRevealHiddenElements(view2d)
+# t.Commit()
+# from lib.imports.document import Fec, doc, Bic, active_view
+#
+# a = Fec(doc).OfCategory(Bic.OST_Grids).WhereElementIsNotElementType().ToElements()
+# print len(a)
+#
+# b = [i for i in a if i.get_BoundingBox(active_view)]
+# print len(b)

@@ -1,8 +1,10 @@
 title: Grids
 
 layout:
+  - Create Grids
   - Rename Grids
   - Rename Selected Grids
   - Save Selected Grids
   - Load Grids
-  - Create Grids
+  - Hide Bubble
+

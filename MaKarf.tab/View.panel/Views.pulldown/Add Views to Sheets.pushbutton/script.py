@@ -1,5 +1,5 @@
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.PlaceViewsOnSheets import PlaceViewsOnSheets
+from UI.Popup import Alert
+from UI.xamlFiles.PlaceViewsOnSheets import PlaceViewsOnSheets
 from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory as Bic
 
 app = __revit__.Application

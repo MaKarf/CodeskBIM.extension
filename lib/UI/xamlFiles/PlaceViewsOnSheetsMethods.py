@@ -2,8 +2,8 @@ from Autodesk.Revit import DB
 from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory as Bic
 from Autodesk.Revit.DB import Transaction
 
-from lib.SortNatural import real_sorting
-from lib.unitConvert import mm2ft
+from SortNatural import real_sorting
+from unitConvert import mm2ft
 
 ui_doc = __revit__.ActiveUIDocument
 doc = __revit__.ActiveUIDocument.Document

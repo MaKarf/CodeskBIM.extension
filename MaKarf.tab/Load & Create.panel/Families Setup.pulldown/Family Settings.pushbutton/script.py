@@ -3,8 +3,8 @@ import sys
 from Autodesk.Revit.DB import BuiltInCategory as Bic, Transaction, ViewType
 from Autodesk.Revit.DB import FilteredElementCollector as Fec
 
-from lib.UI.Popup import Alert
-from lib.codeskResource.loadfamilies import load_family
+from UI.Popup import Alert
+from loadfamilies import load_family
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document

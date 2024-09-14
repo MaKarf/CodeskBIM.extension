@@ -1,7 +1,7 @@
 import clr
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.UI.xamlFiles.forms import ListItem
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.forms import ListItem
 
 clr.AddReference("System.Xml")
 clr.AddReference("PresentationFramework")
@@ -18,10 +18,10 @@ from Autodesk.Revit import DB
 from Autodesk.Revit.DB import FilteredElementCollector as Fec, BuiltInCategory as Bic
 from Autodesk.Revit.DB import Transaction
 
-from lib.SortNatural import real_sorting
-from lib.unitConvert import mm2ft
+from SortNatural import real_sorting
+from unitConvert import mm2ft
 
-from lib.UI.Popup import Alert
+from UI.Popup import Alert
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

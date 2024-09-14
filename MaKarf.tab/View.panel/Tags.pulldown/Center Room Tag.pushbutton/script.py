@@ -1,7 +1,7 @@
 from Autodesk.Revit.DB import Transaction, XYZ
 from Autodesk.Revit.DB import FilteredElementCollector, SpatialElementTag
 
-from lib.getView import threeDView
+from getView import threeDView
 
 doc = __revit__.ActiveUIDocument.Document
 

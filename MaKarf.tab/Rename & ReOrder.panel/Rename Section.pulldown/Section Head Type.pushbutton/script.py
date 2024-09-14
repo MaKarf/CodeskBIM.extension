@@ -4,8 +4,8 @@ from Autodesk.Revit.DB import FilteredElementCollector as Fec
 from Autodesk.Revit.DB import Transaction
 
 from lib import phases
-from lib.AppMethods import Alert
-from lib.searchElement import SearchElementTypeByName
+from AppMethods import Alert
+from searchElement import SearchElementTypeByName
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

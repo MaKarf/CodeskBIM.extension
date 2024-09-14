@@ -10,7 +10,7 @@ from System.Windows.Controls import StackPanel, Orientation, TextBox, Label
 from System.Windows.Input import KeyEventHandler
 from System.Windows import Visibility
 
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
 
 
 class RenumberSheetsUI(CheckboxSelection):

@@ -3,7 +3,7 @@ import json
 import os
 from collections import OrderedDict
 
-from lib.pyrevitsupport import get_pyrevit_master_path
+from pyrevitsupport import get_pyrevit_master_path
 
 
 class OperationType:

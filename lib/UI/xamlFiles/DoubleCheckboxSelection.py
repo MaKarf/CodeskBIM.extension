@@ -8,8 +8,8 @@
 # from Autodesk.Revit.Exceptions import ArgumentException
 # from System.Collections.Generic import List
 #
-# from lib.UI.Popup import Alert
-# from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
+# from UI.Popup import Alert
+# from UI.xamlFiles.CheckboxSelection import CheckboxSelection
 #
 # ui_doc = __revit__.ActiveUIDocument
 # doc = __revit__.ActiveUIDocument.Document
@@ -152,8 +152,8 @@
 #         print(n)
 import clr
 
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.UI.xamlFiles.forms import ListItem
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.forms import ListItem
 
 clr.AddReference("System.Xml")
 clr.AddReference("PresentationFramework")

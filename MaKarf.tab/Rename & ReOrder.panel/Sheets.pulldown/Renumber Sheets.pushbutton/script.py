@@ -1,13 +1,15 @@
 import os
 
-from lib.UI.xamlFiles.RenumberSheetsUI import RenumberSheetsUI
+from UI.xamlFiles.RenumberSheetsUI import RenumberSheetsUI
 
 from Autodesk.Revit.DB import Transaction, ViewSheet, FilteredElementCollector as fec, BuiltInCategory as bic
 
-from lib.SortNatural import real_sorting
+from SortNatural import real_sorting
 
-from lib.UI.xamlFiles.RenumberSheetsPrefix import RenumberSheetsPrefix
-from lib.sheets import get_ordered_sheets_as_dict
+from UI.xamlFiles.RenumberSheetsPrefix import RenumberSheetsPrefix
+from sheets import get_ordered_sheets_as_dict
+
+from lib.UI.Popup import Alert
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument
@@ -46,22 +48,25 @@ class RenumberSheets:
 
             sorted_sheet_list = get_ordered_sheets_as_dict()
 
-            """##################################################################################################"""
-            """##################################################################################################"""
-            ui_selection = RenumberSheetsUI(sorted_sheet_list)
+            if sorted_sheet_list:
+                """##################################################################################################"""
+                """##################################################################################################"""
+                ui_selection = RenumberSheetsUI(sorted_sheet_list)
 
-            sheets_to_rename = ui_selection.selected_items
-            prefix = ui_selection.prefix
-            try:
-                start = int(ui_selection.start_number)
-            except:
-                start = 1
+                sheets_to_rename = ui_selection.selected_items
+                prefix = ui_selection.prefix
+                try:
+                    start = int(ui_selection.start_number)
+                except:
+                    start = 1
 
-            if len(sheets_to_rename) != 0:
-                self.renumber_sheets(sheets_to_rename, start, prefix)
+                if len(sheets_to_rename) != 0:
+                    self.renumber_sheets(sheets_to_rename, start, prefix)
+                else:
+                    # print "nothing selected or canceled"
+                    pass
             else:
-                # print "nothing selected or canceled"
-                pass
+                Alert(title="No Sheet Found", header="No Sheet Found in this project", content="")
 
         else:
             ui = RenumberSheetsPrefix()

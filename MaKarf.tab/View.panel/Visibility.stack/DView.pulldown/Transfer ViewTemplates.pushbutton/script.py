@@ -1,5 +1,5 @@
-from lib.files_path import version_specific_files_path
-from lib.UI.xamlFiles.TransferViewTemplate import TransferViewTemplate
+from files_path import version_specific_files_path
+from UI.xamlFiles.TransferViewTemplate import TransferViewTemplate
 
 """GLOBAL VARIABLES"""
 app = __revit__.Application

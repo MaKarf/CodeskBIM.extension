@@ -2,7 +2,7 @@ import os
 
 from Autodesk.Revit.UI import UIApplication, TaskDialog
 
-from lib.UI.xamlFiles.CreateNewProject import CreateProject
+from UI.xamlFiles.CreateNewProject import CreateProject
 
 app = __revit__.Application
 uiApp = UIApplication(app)

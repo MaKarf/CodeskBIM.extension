@@ -1,9 +1,9 @@
 from Autodesk.Revit import DB
 
-from lib.DoorNWindowSchedule.Enumerations import CodeskTextNoteType
-from lib.imports.document import doc, Fec
-from lib.searchElement import string_search_get_element_type_by_class_name
-from lib.unitConvert import mm2ft
+from DoorNWindowSchedule.Enumerations import CodeskTextNoteType
+from imports.document import doc, Fec
+from searchElement import string_search_get_element_type_by_class_name
+from unitConvert import mm2ft
 
 
 def get_text_not_type():

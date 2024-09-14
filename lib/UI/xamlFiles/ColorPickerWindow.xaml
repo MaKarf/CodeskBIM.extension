@@ -14,6 +14,18 @@
         MouseRightButtonDown="mouse_right_button_down_handler"
         MouseLeftButtonDown="mouse_left_button_down_handler">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/codeskbimWPFWindowStyles.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>-->
+        </ResourceDictionary>
+
+
+
+    </Window.Resources>
+
     <Grid x:Name="grid1" Background="White" MouseWheel="zoom">
 
         <Grid x:Name="grid2">
@@ -32,8 +44,31 @@
 
         </Grid>
 
-        <Button Panel.ZIndex="3" x:Name="txt" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top"
-                Width="120" FontSize="11"/>
-    </Grid>
+        <!--<Button Panel.ZIndex="3" x:Name="bg_btn" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top"
+                Width="120" FontSize="11" BorderBrush="#FF1E0D50" BorderThickness="2" Background="{x:Null}">
 
+        </Button>-->
+
+
+
+
+        <Border
+            x:Name="borderBtnAdd"
+            BorderThickness="3"
+            BorderBrush="DarkGray"
+            CornerRadius="8"
+            Height="70"
+
+            VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
+
+            <Label x:Name="fg_btn" HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontSize="11" Content="..."
+                    Width="120" Height="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">
+            </Label>
+
+
+        </Border>
+
+
+    </Grid>
 </Window>

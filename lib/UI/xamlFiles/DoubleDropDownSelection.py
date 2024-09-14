@@ -1,9 +1,9 @@
 import clr
 from System.Collections.Generic import List
 
-from lib.SortNatural import real_sorting
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.titleBlocks import get_title_blocks
+from SortNatural import real_sorting
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from titleBlocks import get_title_blocks
 
 clr.AddReference("System.Windows")
 from System.Windows.Controls import ComboBoxItem

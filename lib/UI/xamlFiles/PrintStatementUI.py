@@ -1,4 +1,4 @@
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
 
 
 class PrintStatementUI(BaseWPFClass):

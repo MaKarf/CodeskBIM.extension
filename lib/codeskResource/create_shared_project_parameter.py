@@ -3,8 +3,8 @@ import sys
 
 from Autodesk.Revit.DB import BuiltInCategory, BuiltInParameterGroup, Transaction
 
-from lib.UI.Popup import Alert
-from lib.files_path import version_specific_files_path
+from UI.Popup import Alert
+from files_path import version_specific_files_path
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

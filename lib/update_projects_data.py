@@ -1,8 +1,10 @@
 """ update json data"""
 import json
+
+from Autodesk.Revit import DB
 from Autodesk.Revit.DB import BuiltInParameter, FilteredElementCollector as Fec, BuiltInCategory as Bic
 
-from lib.files_path import files_path
+from files_path import files_path
 
 ui_doc = __revit__.ActiveUIDocument
 doc = ui_doc.Document
@@ -19,11 +21,17 @@ class ProjectData:
     existing_projects = {}
     active_project_data_dict = {}
 
+    current_options = []
+    current_options_checker_list = []
+
     def __init__(self, revit_file_name):
+        self.revit_file_name = revit_file_name.replace('\xa0', ' ')
+        self.update_current_options()
+
+    def update_current_options(self):
         self.load_json_file()
         """ replace unknown space characters with a valid space character in the file name
         invalid characters are occurred when the revit name is copied and pasted from somewhere"""
-        self.revit_file_name = revit_file_name.replace('\xa0', ' ')
 
         """ set search scope to only the active revit document"""
         if self.revit_file_name in self.existing_projects:
@@ -32,11 +40,14 @@ class ProjectData:
         else:
             # print("document name: [{}] not found in Project Info database".format(revit_file_name))
             # print("Created doc data with [{}]".format(revit_file_name))
-            # sys.exit()
+
             self.add_project()
             self.active_project_data_dict.update(self.existing_projects[self.revit_file_name])
-        # print("****************************************\n" * 2)
-        # print("OUTSIDE THE PROJECT DATA CLASS\n")
+
+        self.current_options = self.active_project_data_dict["grids_selection_options"]
+        self.current_options_checker_list = [name.lower() for name in self.current_options]
+
+        return self.current_options
 
     def create_new_json(self):
         """create new if no json file exist"""
@@ -78,19 +89,31 @@ class ProjectData:
         # self.rollback_data = self.existing_projects
         # print("Existing Projects Data: ", self.rollback_data)
 
+    @staticmethod
+    def create_a_sheet():
+        # try:
+        ttb_id = Fec(doc).OfCategory(Bic.OST_TitleBlocks).WhereElementIsElementType().FirstElement().GetTypeId()
+        # print(ttb_id)
+
+        sheet = DB.ViewSheet.Create(doc, ttb_id)
+
+        return sheet
+
     def add_project(self):
         """extract parameters from revit database"""
         sheets = Fec(doc).OfCategory(Bic.OST_Sheets).WhereElementIsNotElementType().FirstElement()
+        t = DB.Transaction(doc, "Add project info")
+        t.Start()
         if sheets is None:
-            """No sheets in list so create a dummy sheet"""
-            sheet_info = create_a_sheet()
+            """No sheets in list so create a temporary sheet, extract necessary information and delete it afterwards"""
+            sheet_element = self.create_a_sheet()
 
             # Alert(title="No Sheet Found",
             #       header="Please create at least a sheets and retry",
             #       content="")
             # sys.exit()
         else:
-            sheet_info = sheets
+            sheet_element = sheets
         """ setting Built-In_parameters using the get_Parameter method"""
         project_info = doc.ProjectInformation
 
@@ -111,9 +134,9 @@ class ProjectData:
         client_name = project_info.get_Parameter(BuiltInParameter.CLIENT_NAME).AsString()
         date = project_info.get_Parameter(BuiltInParameter.PROJECT_ISSUE_DATE).AsString()
 
-        designed_by = sheet_info.get_Parameter(BuiltInParameter.SHEET_DESIGNED_BY).AsString()
-        drawn_by = sheet_info.get_Parameter(BuiltInParameter.SHEET_DRAWN_BY).AsString()
-        checked_by = sheet_info.get_Parameter(BuiltInParameter.SHEET_CHECKED_BY).AsString()
+        designed_by = sheet_element.get_Parameter(BuiltInParameter.SHEET_DESIGNED_BY).AsString()
+        drawn_by = sheet_element.get_Parameter(BuiltInParameter.SHEET_DRAWN_BY).AsString()
+        checked_by = sheet_element.get_Parameter(BuiltInParameter.SHEET_CHECKED_BY).AsString()
 
         """===================================================================================================="""
         """parameters for the shared parameters of the site plan"""
@@ -125,12 +148,12 @@ class ProjectData:
         plot = ""
         street = ""
         try:
-            project_name = sheet_info.LookupParameter("Project Name").AsString()
-            locality = sheet_info.LookupParameter("Locality").AsString()
-            district = sheet_info.LookupParameter("District_Municipality_Metropolis").AsString()
-            region = sheet_info.LookupParameter("Region").AsString()
-            plot = sheet_info.LookupParameter("Plot Number").AsString()
-            street = sheet_info.LookupParameter("Street Name").AsString()
+            project_name = sheet_element.LookupParameter("Project Name").AsString()
+            locality = sheet_element.LookupParameter("Locality").AsString()
+            district = sheet_element.LookupParameter("District_Municipality_Metropolis").AsString()
+            region = sheet_element.LookupParameter("Region").AsString()
+            plot = sheet_element.LookupParameter("Plot Number").AsString()
+            street = sheet_element.LookupParameter("Street Name").AsString()
 
         except AttributeError:
             """parameter not found"""
@@ -174,36 +197,41 @@ class ProjectData:
             # self.rollback_changes()
             pass
 
+        """delete sheet after extracting the necessary information"""
+        doc.Delete(sheet_element.Id)
+
+        t.Commit()
+
     # def update_project_info(self):
     #     project_info = self.active_project_data_dict["project_info"]
     def delete_grid_option(self, option_name):
         current_options = self.active_project_data_dict["grids_selection_options"]
         if option_name in current_options:
+            # print option_name
             """update json file with new option"""
             self.existing_projects[self.revit_file_name]["grids_selection_options"].pop(option_name)
             with open(self.path, "w") as f:
                 json.dump({"documents": self.existing_projects}, f, indent=4)
+                f.close()
+            return self.update_current_options()
         else:
-            pass
+            # print "option_name NOT in current_options"
+            return None
 
-    def save_grid_selection(self, grid_ids, option_name, is_sub=False):
-        current_options = self.active_project_data_dict["grids_selection_options"]
-        if option_name in current_options:
-            # print("Name already exist")
-            main_grids = grid_ids if is_sub is False else current_options[option_name]["main_grids"]
-            sub_grids = grid_ids if is_sub is True else current_options[option_name]["sub_grids"]
-        else:
-            # print("Acceptable option name")
-            main_grids = grid_ids if is_sub is False else []
-            sub_grids = grid_ids if is_sub is True else []
+    def save_grid_selection(self, option_name, merged_vertical_and_horizontal_grids):
+
+        main = []
+        sub = []
+        [(main.append(int(grid_data["elem"].Id.IntegerValue)) if grid_data["sub"] is False else
+          sub.append(int(grid_data["elem"].Id.IntegerValue))) for grid_data in merged_vertical_and_horizontal_grids]
 
         options_dict = {}
-        options_dict.update(current_options)
+        options_dict.update(self.current_options)
 
         new_option = {
             option_name: {
-                "main_grids": main_grids,
-                "sub_grids": sub_grids
+                "main_grids": main,
+                "sub_grids": sub
             }
         }
 
@@ -212,6 +240,9 @@ class ProjectData:
         self.existing_projects[self.revit_file_name]["grids_selection_options"] = options_dict
         with open(self.path, "w") as f:
             json.dump({"documents": self.existing_projects}, f, indent=4)
+
+        """read the json file to get the updated properties"""
+        self.update_current_options()
 
     def rollback_changes(self):
         """create new if no json file exist"""
@@ -224,18 +255,7 @@ class ProjectData:
             json_new.close()
             # print("rolled back")
 
-
-def create_a_sheet():
-    from Autodesk.Revit import DB
-
-    # try:
-    ttb_id = Fec(doc).OfCategory(Bic.OST_TitleBlocks).WhereElementIsElementType().FirstElement().GetTypeId()
-    # print(ttb_id)
-    t = DB.Transaction(doc, "Create dummy sheet")
-    t.Start()
-    DB.ViewSheet.Create(doc, ttb_id)
-    t.Commit()
-    return Fec(doc).OfCategory(Bic.OST_Sheets).WhereElementIsNotElementType().FirstElement()
+    # return Fec(doc).OfCategory(Bic.OST_Sheets).WhereElementIsNotElementType().FirstElement()
 
     # except AttributeError:
     #     Alert("Some sheets number are already used in existing sheets",

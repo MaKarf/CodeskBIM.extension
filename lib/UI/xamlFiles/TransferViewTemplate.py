@@ -1,9 +1,9 @@
 import clr
 
-from lib.SortNatural import real_sorting
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.UI.xamlFiles.forms import ListItem
+from SortNatural import real_sorting
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from UI.xamlFiles.forms import ListItem
 
 clr.AddReference("System.Windows.Forms")
 clr.AddReference("System")
@@ -17,8 +17,8 @@ from collections import defaultdict
 from Autodesk.Revit.DB import FilteredElementCollector, View, ElementTransformUtils, CopyPasteOptions, ElementId, \
     Transform, TransactionGroup, Transaction
 
-from lib.UI.Popup import Alert
-from lib.codeskResource.codesk_transaction import codesk_transaction as transaction
+from UI.Popup import Alert
+from codeskResource.codesk_transaction import codesk_transaction as transaction
 
 from System.Collections.Generic import List
 from System.Windows.Controls import ComboBoxItem
@@ -219,9 +219,6 @@ class TransferViewTemplate(BaseWPFClass):
 
             self.list_view_templates = list_view_templates
             self.UI_ViewTemplates_ListBox.ItemsSource = list_view_templates
-
-        except IndexError:
-            """print("Project selection Error")"""
 
         except IndexError:
             """print("Project selection Error")"""

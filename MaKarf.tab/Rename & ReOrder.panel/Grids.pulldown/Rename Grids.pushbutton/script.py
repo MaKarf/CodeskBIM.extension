@@ -1,4 +1,4 @@
-from lib.UI.xamlFiles.RenameGrids import RenameGrids
+from UI.xamlFiles.Grids.CommonImports import SelectionType
+from UI.xamlFiles.Grids.Rename.RenameGrids import RenameGrids
 
-rename_class = RenameGrids()
-
+RenameGrids(SelectionType.select_from_db, include_hidden_grids=False)

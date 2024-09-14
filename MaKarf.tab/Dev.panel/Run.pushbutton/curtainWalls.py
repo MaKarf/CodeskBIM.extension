@@ -4,10 +4,10 @@ from Autodesk.Revit import DB
 from Autodesk.Revit.DB import XYZ, FilteredElementCollector
 from Autodesk.Revit.DB.Structure import StructuralType
 
-from lib.UI.xamlFiles.CheckboxSelection import CheckboxSelection
-from lib.files_path import files_path
-from lib.imports.DotNetSystem import List
-from lib.loadfamilies import load_family
+from UI.xamlFiles.CheckboxSelection import CheckboxSelection
+from files_path import files_path
+from imports.DotNetSystem import List
+from loadfamilies import load_family
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         Title="Select from list"
-        Height="120" Width="335"
+        Height="125" Width="335"
         WindowStartupLocation="CenterScreen"
         ShowInTaskbar="False"
         Background="#A6C2E3"
@@ -12,25 +12,13 @@
         HorizontalAlignment="Center"
 
         ResizeMode="NoResize">
-    <StackPanel>
+    <StackPanel Orientation="Vertical">
 
         <!--TOP ALLOWANCE PANEL TO ADD EXTRA FEATURES AT THE ABOVE THE LIST BOX-->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="top_allowance_panel">
-        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="top_allowance_panel"/>
 
-
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10,15,0,0">
-            <TextBlock x:Name="label_object" Text="Select" Width="100" Height="20" />
-            <ComboBox x:Name="dropdown_object" Width="150" Height="20" Margin="10,0,0,0">
-            </ComboBox>
-        </StackPanel>
-
-        <!--BOTTOM ALLOWANCE PANEL TO ADD EXTRA FEATURES AT THE BELOW THE LISTBOX-->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="bottom_allowance_panel">
-        </StackPanel>
-
-
-        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal">
+        <TextBlock x:Name="label_object" Text=""  Height="20" HorizontalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10,15,0,10">
             <Button
                     x:Name="button_object"
                     Content="Select"
@@ -39,7 +27,14 @@
 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
+
+            <ComboBox x:Name="dropdown_object" Width="150" Height="20" Margin="10,0,0,0"
+            ItemsSource="{Binding dropdown_dict_data}"/>
         </StackPanel>
+
+
+        <!--BOTTOM ALLOWANCE PANEL TO ADD EXTRA FEATURES AT THE BELOW THE LISTBOX-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" x:Name="bottom_allowance_panel"/>
 
     </StackPanel>
 

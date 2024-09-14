@@ -2,9 +2,9 @@ from Autodesk.Revit import DB
 
 from Autodesk.Revit.DB import DatumEnds, Transaction
 
-from lib.UI.Popup import Alert
-from lib.UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
-from lib.selection.ui_selection import rectangular_selection_by_category
+from UI.Popup import Alert
+from UI.xamlFiles.codeskbimWPFWindow import BaseWPFClass
+from selection.ui_selection import rectangular_selection_by_category
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument

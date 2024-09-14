@@ -2,10 +2,10 @@ import json
 
 from Autodesk.Revit.DB import BoundingBoxXYZ, Line
 
-from lib.imports.DotNetSystem import List
+from imports.DotNetSystem import List
 from Autodesk.Revit import DB
 
-from lib.unitConvert import mm2ft
+from unitConvert import mm2ft
 
 sheet_size_scale_factor = 1.41
 A3SheetWidth = 420

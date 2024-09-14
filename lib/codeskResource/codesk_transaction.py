@@ -1,11 +1,11 @@
-import contextlib
+from contextlib import contextmanager
 import sys
 import traceback
 
 from Autodesk.Revit.DB import Transaction
 
 
-@contextlib.contextmanager
+@contextmanager
 def try_except(debug=False):
     """ContextManager for Try/Except statement with debug option for except.
     :param debug: if True - Exception error will be displayed with traceback.format_exc()"""
@@ -18,7 +18,7 @@ def try_except(debug=False):
             print("*" * 20)
 
 
-@contextlib.contextmanager
+@contextmanager
 def codesk_transaction(doc, title, debug=True, exitscript=False):
     t = Transaction(doc, title)
     t.Start()

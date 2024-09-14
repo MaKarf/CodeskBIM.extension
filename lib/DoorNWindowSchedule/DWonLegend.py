@@ -2,18 +2,18 @@
 from Autodesk.Revit import DB
 from Autodesk.Revit.DB import BuiltInCategory as Bic, XYZ, BoundingBoxXYZ
 
-from lib.unitConvert import mm2ft
-from lib.sheets import get_ordered_sheets_as_dict
-from lib.DoorNWindowSchedule.Enumerations import title_block_margin_percent, title_block_info_panel_space, \
+from unitConvert import mm2ft
+from sheets import get_ordered_sheets_as_dict
+from DoorNWindowSchedule.Enumerations import title_block_margin_percent, title_block_info_panel_space, \
     IgnoreSidesOfRectangle, DoorsAndWindowsScheduleViewport
 
-from lib.DoorNWindowSchedule.LegendComponent import place_legend_on_sheet, create_reference_planes_from_center, \
+from DoorNWindowSchedule.LegendComponent import place_legend_on_sheet, create_reference_planes_from_center, \
     DoorsAndWindows, create_and_get_drafting_view
 
 """slow imports"""
-from lib.DoorNWindowSchedule.LineDrawing import CreateRectangle, CreateDandWViewport
-from lib.DoorNWindowSchedule.doorsNwindowsMethods import ft2mm
-from lib.UI.xamlFiles.DoorsAndWindowsSchedule import DoorsAndWindowsSchedule
+from DoorNWindowSchedule.LineDrawing import CreateRectangle, CreateDandWViewport
+from DoorNWindowSchedule.doorsNwindowsMethods import ft2mm
+from UI.xamlFiles.DoorsAndWindowsSchedule import DoorsAndWindowsSchedule
 
 
 app = __revit__.Application

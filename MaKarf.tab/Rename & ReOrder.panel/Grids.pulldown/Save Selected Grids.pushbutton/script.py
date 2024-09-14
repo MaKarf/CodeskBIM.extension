@@ -1,6 +1,6 @@
-from lib.update_projects_data import ProjectData
+from update_projects_data import ProjectData
 
-from lib.UI.xamlFiles.SaveGridsSelection import SaveGridsUIClass
+from UI.xamlFiles.Grids.Save.SaveGridsSelection import SaveGridsUIClass
 
 app = __revit__.Application
 ui_doc = __revit__.ActiveUIDocument
