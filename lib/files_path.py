@@ -1,5 +1,5 @@
 import os
-from initialize import app, FilesPath, extension_path
+from initialize import app, FilesPath
 
 """get the FilesPath class from c#"""
 files_path = FilesPath

@@ -20,7 +20,7 @@ def set3DView():
     ui_doc.ActiveView = trd if trd else twd
 
 
-def get2DView(views_list=views):
+def get2DView(views_list):
     nv = list(filter(lambda vw: vw.ViewType == ViewType.FloorPlan and not vw.IsTemplate, views_list))
     # print nv
     return nv.pop() if nv else None

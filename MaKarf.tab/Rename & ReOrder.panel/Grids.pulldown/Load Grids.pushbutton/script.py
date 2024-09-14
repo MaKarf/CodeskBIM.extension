@@ -1,8 +1,3 @@
-from UI.xamlFiles.Grids.CommonImports import SelectionType
-from UI.xamlFiles.Grids.Rename.RenameGrids import RenameGrids
+from UI.xamlFiles.LoadAndRenameGrids import LoadAndRenameGrids
 
-RenameGrids(SelectionType.select_from_options)
-
-# from UI.xamlFiles.Grids.Load.LoadAndRenameGrids import LoadGrids
-#
-# LoadGrids()
+rename_class = LoadAndRenameGrids("LoadAndRenameGrids.xaml")

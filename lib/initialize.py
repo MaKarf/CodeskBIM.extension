@@ -40,12 +40,8 @@ from CodeskBIMRevitFilesPath import FilesPath
 
 """importing the WPF module"""
 """options for importing WPF module"""
-import IronPython
-
-# print IronPython
-# wpf = IronPython.Modules.Wpf
-# Wpf = IronPython.Modules.Wpf
-
+Import IronPython
+print IronPython
 from IronPython.Modules import Wpf  # import wpf using the c# Wpf naming convention
 from IronPython.Modules import Wpf as wpf  # import wpf using the pyrevit naming convention
 
